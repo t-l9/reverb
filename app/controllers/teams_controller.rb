@@ -10,6 +10,7 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+      @messages = @team.messages.order(created_at: :desc).limit(100).reverse.each
   end
 
   # GET /teams/new
