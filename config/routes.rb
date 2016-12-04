@@ -2,7 +2,7 @@ Rails.application.routes.draw do
     devise_for :users
 
     resources :teams do
-        resources :team_users
+        resource :team_members
     end
 
     root to: "teams#index"
