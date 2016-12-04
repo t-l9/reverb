@@ -5,5 +5,12 @@
   <%= @team.name %>
 </p>
 
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+<div data-behavior="messages">
+    <% @team.messages.limit(100).each do |message| %>
+        <div><strong><%= message.user.username %>:</strong> <%= message.body %></div>
+    <% end %>
+
+    <%= form_for [@team, Message.new] do |f| %>
+        <%= f.text_area :body, rows: 1, class: "form-control", autofocus: "true" %>
+    <% end %>
+</div>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
     resources :teams do
         resource :team_members
+        resources :messages
     end
 
     root to: "teams#index"
