@@ -2,13 +2,13 @@
 <html>
     <head>
 
-        <title>Reverb</title>
+      <title>Reverb</title>
 
-        <%= csrf_meta_tags %>
+      <%= csrf_meta_tags %>
 
-        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     </head>
 
@@ -16,112 +16,112 @@
 
         <nav class="navbar navbar-default navbar-fixed-top">
 
-            <div class="container-fluid">
+          <div class="container-fluid">
 
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
+              <div class="navbar-header">
 
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 
-                        <span class="sr-only">Toggle navigation</span>
+                      <span class="sr-only">Toggle navigation</span>
 
-                        <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
 
-                        <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
 
-                        <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
 
-                    </button>
+                  </button>
 
-                    <%= link_to root_path, class: "navbar-brand" do %>
+                  <%= link_to root_path, class: "navbar-brand" do %>
 
-                        Reverb
+                      Reverb
 
-                    <% end %>
+                  <% end %>
 
-                </div>
+              </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-                    <ul class="nav navbar-nav">
+                  <ul class="nav navbar-nav">
 
-                    </ul>
+                  </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
+                  <ul class="nav navbar-nav navbar-right">
 
-                        <% if user_signed_in? %>
+                      <% if user_signed_in? %>
 
-                            <%= yield :right_nav %>
+                          <%= yield :right_nav %>
 
-                            <li class="dropdown">
+                          <li class="dropdown">
 
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %> <span class="caret"></span></a>
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %> <span class="caret"></span></a>
 
-                                <ul class="dropdown-menu">
+                              <ul class="dropdown-menu">
 
-                                    <li><%= link_to "Settings", edit_user_registration_path %></li>
+                                  <li><%= link_to "Settings", edit_user_registration_path %></li>
 
-                                    <li role="separator" class="divider"></li>
+                                  <li role="separator" class="divider"></li>
 
-                                    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+                                  <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
 
-                                </ul>
+                              </ul>
 
-                            </li>
+                          </li>
 
-                        <% else %>
+                      <% else %>
 
-                            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+                          <li><%= link_to "Sign Up", new_user_registration_path %></li>
 
-                            <li><%= link_to "Login", new_user_session_path %></li>
+                          <li><%= link_to "Login", new_user_session_path %></li>
 
-                        <% end %>
+                      <% end %>
 
-                    </ul>
+                  </ul>
 
-                </div><!-- /.navbar-collapse -->
+              </div><!-- /.navbar-collapse -->
 
-            </div><!-- /.container-fluid -->
-        </nav>
+          </div><!-- /.container-fluid -->
+      </nav>
 
-        <div class="fluid-container" style="margin-top: 70px;">
+      <div class="fluid-container" style="margin-top: 70px;">
 
-            <div class="row">
+          <div class="row">
 
-                <div class="col-sm-2" style="position: fixed;">
+              <div class="col-sm-2" style="position: fixed;">
 
-                    <% if user_signed_in? %>
+                <% if user_signed_in? %>
 
-                        <h5>Teams</h5>
+                    <h5>Teams</h5>
 
                         <ul>
 
                             <% current_user.teams.each do |team| %>
 
-                                <li>
+                               <li>
 
-                                    <%= link_to team.name, team %>
+                                    <%= link_to team.name, team, data: {behavior: "team-link", team_id: team.id} %>
 
                                 </li>
 
                             <% end %>
                         </ul>
 
-                    <% end %>
+                  <% end %>
 
-                </div>
+              </div>
 
-                <div class="col-sm-10 col-sm-offset-2">
+              <div class="col-sm-10 col-sm-offset-2">
 
-                    <%= yield %>
+                  <%= yield %>
 
-                </div>
-
-            </div>
+              </div>
 
         </div>
 
-    </body>
+      </div>
+
+  </body>
 
 </html>

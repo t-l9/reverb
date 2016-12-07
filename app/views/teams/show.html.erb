@@ -5,12 +5,12 @@
   <%= @team.name %>
 </p>
 
-<div data-behavior="messages">
+<div data-behavior="messages" data-team-id='<%= @team.id %>'>
     <% @messages.each do |message| %>
-        <div><strong><%= message.user.username %>:</strong> <%= message.body %></div>
-    <% end %>
-
-    <%= form_for [@team, Message.new] do |f| %>
-        <%= f.text_area :body, rows: 1, class: "form-control", autofocus: "true" %>
+        <%= render message %>
     <% end %>
 </div>
+
+<%= form_for [@team, Message.new], remote: true do |f| %>
+    <%= f.text_area :body, rows: 1, class: "form-control", autofocus: "true" %>
+<% end %>
