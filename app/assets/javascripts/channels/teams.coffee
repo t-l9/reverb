@@ -12,4 +12,4 @@ App.teams = App.cable.subscriptions.create "TeamsChannel",
     if activeTeam.length > 0
       activeTeam.append(data.message)
     else
-      $("[data-behavior='message'][data-team-id='#{data.team_id}']").css('font-weight', 'bold');
+      $("[data-behavior='team-link'][data-team-id='#{data.team_id}']").css('font-weight', 'bold');
